@@ -1,49 +1,49 @@
-# racoon-bazaar
+# Racoon Bazaar
+## [Current Bugs](https://github.com/xa888s/racoon-bazaar/issues/)
+## System Overview
+The purpose for Racoon Bazaar is to have a platform for students to buy and sell their textbooks they no longer need
 
-Best marketplace in the world :D
-
-
-nodeJS Libraries/Frameworks/etc Used: 
-
-    -body-parser: for processing HTTP request data
-    
-    -dotenv: for creation and use of environment variables for things such as database info, api keys, etc
-    
-    -express: for server handling
-    
-    -mysql2: for database handling
-
-Iteration 1 Progress on Backend:
-
-    -Server is set to receive requests from HTML views.
-    
-    -Server is set to send requests to the AWS database.
-    
-    -Server is able to turn those requests into SQL statements that can then be used to search/insert to database.
-    
-End Result:
-
-    -Server is able to take client requests and send them off to the database. 
-    -The database returns its data to the server, where currently the data
-    is being sent as a raw JSON object file
-    
-
-Iteration 2 Plans on Backend:
-
-    -Code refactoring (Attempt to reduce the amount of search functions)
-    -Sanitizing input
-    -Sculpt JSON object output into something more presentable
-    -Begin a table to house accounts
-    -Relate accounts to buy and sell requests
+## Design Considerations
+The system is designed to be used by university students, who we can assume are more well-versed with dealing with online platforms such as this when compared the greater population.
 
 
-Iteration 1 Sequence Diagram:
+## Archectural Strategies
+The system will be build using Node.js with various modules such as:
 
-![Racoon Bazaar Iteration 1](https://github.com/xa888s/racoon-bazaar/assets/144485576/ec09e23a-05b5-40b2-937b-61cd7c0b9841)
+- [Body-parser](https://www.npmjs.com/package/body-parser): for processing HTTP request data
+- [Dotenv](https://www.npmjs.com/package/dotenv): for creation and use of environment variables for things such as database info, api keys, etc
+- [Express](https://www.npmjs.com/package/express): for server handling
+- [Express-session](https://www.npmjs.com/package/express-session): for creating a session storing account information    
+- [mysql2](https://www.npmjs.com/package/mysql2): for database handling
+- [bcrypt](https://www.npmjs.com/package/bcrypt): for hashing passwords and all that jazz
 
 
-Iteration 1 Database UML Diagram:
-
-![Bazaar Iteration 1](https://github.com/xa888s/racoon-bazaar/assets/144485576/4aef15c8-83b9-4ab1-8b11-aa7e33791a8a)
+## [Requirements](https://github.com/xa888s/racoon-bazaar/blob/Iteration2/Diagrams/docs/Requirements.md)
 
 
+## Analysis
+
+#### [User Stories](https://github.com/xa888s/racoon-bazaar/blob/Iteration2/Diagrams/docs/UserStories.md) 
+
+#### [Use Cases](https://github.com/xa888s/racoon-bazaar/blob/Iteration2/Diagrams/docs/UseCase.md)
+
+#### [Scenarios](https://github.com/xa888s/racoon-bazaar/blob/Iteration2/Diagrams/docs/UserScenarios.md)
+
+
+
+
+
+## Detailed Design
+
+#### [Class Diagrams](https://github.com/xa888s/racoon-bazaar/blob/Iteration2/Diagrams/docs/ClassDiagram.md)
+
+
+#### [Sequence Diagrams](https://github.com/xa888s/racoon-bazaar/blob/Iteration2/Diagrams/docs/SequenceDiagrams.md)
+
+
+
+
+
+
+#### Reference
+- [Design Document Template/Reference](https://web.archive.org/web/20180822010044/https://www.math-cs.gordon.edu/courses/cs211/ATMExample/)

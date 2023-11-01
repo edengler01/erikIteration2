@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Montserrat&family=Raleway:wght@800&family=Roboto&family=Rubik:wght@300&display=swap"
         rel="stylesheet">
-    <title>Contacts</title>
+    <title>Register | The Racoon Bazaar</title>
 </head>
 
 <body>
@@ -44,9 +44,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav">
-                <a href="bazaar.html" class="nav-item nav-link"><span id="title"><b>Marketplace</b></span></a>
-                <a href="about.html" class="nav-item nav-link"><span id="title"><b>About</b></span></a>
-                <a href="contact.html" class="nav-item nav-link"><span id="title"><b>Contact</b></span></a>
+                <a href="bazaar" class="nav-item nav-link"><span id="title"><b>Marketplace</b></span></a>
+                <a href="about" class="nav-item nav-link"><span id="title"><b>About</b></span></a>
+                <a href="contact" class="nav-item nav-link"><span id="title"><b>Contact</b></span></a>
+                <a href="Login" class="nav-item nav-link"><span id= "title"><b>Log In</b></span></a>
+                <a href="Sell" class="nav-item nav-link"><span id= "title"><b>Sell a Book</b></span></a>
             </div>
             <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -55,6 +57,35 @@
         </div>
     </nav>
 
+    <P> <B id="signup"> Register Your Account</B>
+    </P>
+    <div id="container">
+        <div id="Register">
+        <form action="/registerAccount" method="post">
+             <label for="user_firstName"> Enter your First Name* </label>
+             <input type="text", name= "user_firstName", id="user_firstName" required> 
+             <p></p>
+             <label for="user_lastName"> Enter your Last Name* </label>
+             <input type="text", name= "user_lastName", id="user_lastName" required>
+             <p></p>
+             <label for="user_major"> Enter your major* </label>
+             <input type="text", name= "user_major", id="user_major">
+             <p></p>
+             <label for="user_phone_number"> Enter your Phone Number* </label>
+             <input type="text", name= "user_phone_number", id="user_major" required>
+             <p></p>
+             <label for="email"> Enter your E-Mail address* </label >
+             <input type="email", name= "email", id="email" required>
+             <p></p>
+             <label for="password"> Enter your password* </label>
+             <input type="password", name="password", id="password" required>
+             <p></p>
+                <input type="submit" class="Filterout-button" value="Register!">
+        </form>
+        </div>
+    </div>
+    <p id="already"> Already Have an account? <a id="anchor" href="Login.html"> Sign in</a></p>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

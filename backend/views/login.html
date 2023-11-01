@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Montserrat&family=Raleway:wght@800&family=Roboto&family=Rubik:wght@300&display=swap"
         rel="stylesheet">
-    <title>About</title>
+    <title> Login | The Racoon Bazaar</title>
 </head>
 
 <body>
@@ -44,30 +44,41 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav">
-                <a href="bazaar.html" class="nav-item nav-link"><span id="title"><b>Marketplace</b></span></a>
-                <a href="about.html" class="nav-item nav-link"><span id="title"><b>About</b></span></a>
-                <a href="contact.html" class="nav-item nav-link"><span id="title"><b>Contact</b></span></a>
-            </div>
-            <!-- <form class="form-inline my-2 my-lg-0">
+                <a href="/bazaar" class="nav-item nav-link"><span id="title"><b>Marketplace</b></span></a>
+                <a href="/about" class="nav-item nav-link"><span id="title"><b>About</b></span></a>
+                <a href="/contact" class="nav-item nav-link"><span id="title"><b>Contact</b></span></a>
+                <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form> -->
-        </div>
+            </div>
     </nav>
 
-    <h2 class="pl-2 mt-2"> Brief History</h2>
-    <p class="pl-4 pr-5">The Amazing Racoon Bazaar was an online marketplace platform created by a CMPT276 group of five
-        students AKA Racoons.
-        It all goes back to the fall of 2023 when five students at Simon Fraser University met in the first class of a
-        course CMPT 276.
-        The main idea behind this start up was to provide Sfu students with a unique market place platform especially
-        for educational
-        tools such as books including course books, etc.
-    </p>
-    <div class="justify-content-center"><img class=" image-fluid image1"
-            style="width: 850px; margin-left: auto; display:block; margin-right:auto; "
-            src="https://images.unsplash.com/photo-1621290444502-b1d7dfcb202f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2003&q=80"
-            alt="responsive image"></div>
+    <P><B id="signin"> Log in to your account </B></P>
+    <div id="container">
+        <div id="login">
+            <form action="/login" method="post">
+                <label for="email"> E-mail address* </label>
+                <input type="email" , name="email" , id="email">
+                <p></p>
+                <label for="password"> Password* </label>
+                <input type="password" , name="password" , id="password">
+                <p></p>
+                <input type="submit" class="Filterout-button" value="Log In!">
+                <br>
+                <br>
+                <P> New to Bazaar? <br>
+                    <a id="anchor" href="register"> Sign up for an account </a>
+                </P>
+            </form>
+        </div>
+    </div>
+
+
+    <form action="/loginTest" method="post">
+        <label for="loginTest">Log In with Creditendials Coded In</label>
+        <input type="submit" id="loginTestButton" value="Log In TA/Presentation">
+    </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

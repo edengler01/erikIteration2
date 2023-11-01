@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Montserrat&family=Raleway:wght@800&family=Roboto&family=Rubik:wght@300&display=swap"
         rel="stylesheet">
-    <title>Contacts</title>
+    <title> Sell a Book | The Racoon Bazaar</title>
 </head>
 
 <body>
@@ -47,8 +47,8 @@
                 <a href="/bazaar" class="nav-item nav-link"><span id="title"><b>Marketplace</b></span></a>
                 <a href="/about" class="nav-item nav-link"><span id="title"><b>About</b></span></a>
                 <a href="/contact" class="nav-item nav-link"><span id="title"><b>Contact</b></span></a>
-                <a href="/logIn" class="nav-item nav-link"><span id="title"><b>Log Out</b></span></a>
-                <a href="/sell" class="nav-item nav-link"><span id="title"><b>Sell a Book</b></span></a>
+                <a href="/logout" class="nav-item nav-link"><span id= "title"><b>Log Out</b></span></a>
+                <a href="/sell" class="nav-item nav-link"><span id= "title"><b>Sell a Book</b></span></a>
             </div>
             <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -56,6 +56,64 @@
             </form> -->
         </div>
     </nav>
+
+
+    <P><B id="signin"> Sell a Book </B></P>
+    <div id="container">
+        <div class="sell">
+            
+            <form action="/insertOrder" method="post">
+                <div id="Bookname" class="input-group mb-4">
+                    <div id="bookname" class="input-group-prepend">
+                        <span class="input-group-text "><span id="title"><b>BOOK NAME*</b></span></span>
+                    </div>
+                    <input type="text" placeholder="Name Of The Book" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" name="book_name">
+                </div>
+                <div id="Author" class="input-group mb-4 ">
+                    <div id="author" class="input-group-prepend">
+                        <span class="input-group-text "><span id="title"><b>Author Name*</b></span></span>
+                    </div>
+                    <input type="text" placeholder="Author Name" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" name="author">
+                </div>
+                <div class="input-group mb-4 ">
+                    <div id="Course Code" class="input-group-prepend ">
+                        <span class="input-group-text"><span id="title"><B>COURSE CODE*</B></span></span>
+                    </div>
+                    <input type="text" placeholder="Course number" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" name="course_code">
+                </div>
+    
+                <div class="input-group mb-4 ">
+                    <div id="Condition" class="input-group-prepend ">
+                        <label id="title" class="input-group-text" for="inputGroupSelect01"><span
+                                id="title"><B>CONDITION*</B></span></label>
+                    </div>
+                    <select class=" custom-select" id="inputGroupSelect01" name="condition">
+                        <option selected>Choose...</option>
+                        <option value = "Any"> Any</option>
+                        <option value="New">New</option>
+                        <option value="Like New">Like New</option>
+                        <option value="Used">Used</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                </div>
+                
+                <div id="price" class="input-group mb-4  ">
+                    <div id="price" class="input-group-prepend">
+                        <span class="input-group-text "><span id="title"><b>PRICE*</b></span></span>
+                    </div>
+                    <input type="text" placeholder="Price of the book" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" name="price">
+                </div>
+    
+            <input type="submit" class="Filterout-button" value="Insert Order!">
+    
+            </form>
+    
+        </div>    
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
