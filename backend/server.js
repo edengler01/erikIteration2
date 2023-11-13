@@ -48,13 +48,12 @@ app.use(session({
 
 
 
-
-
-//SETTERs
-//set homepage on intial load of web page to login
+//Set homepage on intial load of web page to login
 app.get('/', async (req,res)=>{
    res.sendFile(path.join(__dirname,'/views/login.html'));
 });
+
+
 //function that takes user input and sends it off to the database to check if they are valid
 //TODO: Make error page
 app.post('/login', async (req,res)=>{
@@ -68,9 +67,13 @@ app.post('/login', async (req,res)=>{
     //if the password matches, then set the session user to the email for later storage
     //then redirect to bazaar page
     if(isMatch){
+        //retrieve userID from server via email criteria
         const userID = await getUserID(req.body.email);
+        //set the user property of the session to the retrieve email
         req.session.user = req.body.email;
+        //set the user_id property of the session
         req.session.user_id = userID;
+        //redirect to the "dashboard"
         res.sendFile(path.join(__dirname,'views/bazaar.html'));
     }
     //if the password doesnt match, then notify that either password or email doesnt match
@@ -79,29 +82,34 @@ app.post('/login', async (req,res)=>{
     }
 })
 
+
+//SETTERS
+//redirect to register page
 app.get('/register', async(req,res)=>{
     res.sendFile(path.join(__dirname,'/views/register.html'))
 })
 
+//redirect to bazaar page
 app.get('/bazaar', async(req,res)=>{
+    //if the user property of the session is not defined, then return an 400 error (server error)
     if(!req.session.user){
         return res.status(401).send();
     }
+    //if the user property is defined, then they must have logged in before
     return res.status(200).send("Welcome to the dashboard");
 })
 
+//redirect to about page
 app.get('/about', async(req,res)=>{
    res.sendFile(path.join(__dirname,'/views/about.html'));
 });
 
+//redirect to contact page
 app.get('/contact', async(req,res)=>{
    res.sendFile(path.join(__dirname,'/views/contact.html'));
 });
 
-app.get('/register', async(req,res)=>{
-    res.sendFile(path.join(__dirname,'/views/register.html'));
-})
-
+//redirect to the sell page
 app.get('/sell', async(req, res)=>{
     res.sendFile(path.join(__dirname,'/views/sell.html'));
 })
@@ -118,9 +126,9 @@ app.post('/insertOrder', async(req,res)=>
     const bookPrice = req.body.price;
     const userID = req.session.user_id;
     const author = req.body.author;
-    console.log(author);
-    
 
+    
+    //if the inputs are not defined, return 400 error
     if (!checkInput(bookName) || !checkInput(courseCode) || 
     !checkInput(bookCond) || !checkInput(bookPrice)){
         res.status(400).send("Invalid input data. Check book name, course code, book condition & price fields for invalid input");
@@ -135,13 +143,14 @@ app.post('/insertOrder', async(req,res)=>
     
 })
 
-//RETRIEVERS
-//as it stands, all retrieve functions are currently sending raw JSON object files to output
+//RETRIEVERS (as it stands, all retrieve functions are currently sending raw JSON object files to output)
+//query the database to get all avaiable sales
 app.get('/retrieveSales',async(req,res)=>{
     const sells = await getSells();
     res.send(sells);
 })
 
+//search database based of course code
 app.post('/searchSales',async(req,res)=>{
     const checkBookCourseCode = req.body.course_code;
     if (!checkInput(checkBookCourseCode)){
@@ -151,6 +160,7 @@ app.post('/searchSales',async(req,res)=>{
     res.send(sales);
 })
 
+//search sales based on book name 
 app.post('/searchSalesByName', async(req,res)=>{
     const bookCourseName = req.body.book_name;
     if (!checkInput(bookCourseName)) {
@@ -162,7 +172,7 @@ app.post('/searchSalesByName', async(req,res)=>{
     }
 })
 
-
+//search sales based by course code
 app.post('/searchSalesByCourse', async(req,res)=>{
     const bookCourseCode = req.body.course_code;
     if (!checkInput(bookCourseCode)) {
@@ -175,6 +185,7 @@ app.post('/searchSalesByCourse', async(req,res)=>{
     }
 })
 
+//search sales based by book condition 
 app.post('/searchSalesByCondition', async(req,res)=>{
     const bookConditionCode = req.body.condition;
     if (!checkInput(bookConditionCode)) {
@@ -187,6 +198,7 @@ app.post('/searchSalesByCondition', async(req,res)=>{
     } 
 })
 
+//search sales based by minimum price point and maximum price point
 app.post('/searchByPriceRange', async(req,res)=>{
     const bookMinPrice = req.body.minPrice;
     const bookMaxPrice = req.body.maxPrice
@@ -199,23 +211,24 @@ app.post('/searchByPriceRange', async(req,res)=>{
     }
 })
 
+
+//search the book database using the user_id stored and uses that for WHERE statement
 app.post('/getUserInventory', async(req,res)=>{
     const userInventory = await getUserInventory(req.session.user_id);
     res.send(userInventory);
 })
 
+//search book based on author name
 app.post('/searchSalesByAuthor', async(req,res)=>{
     const author = req.body.author_name;
-    
     if (!checkInput(author)) {
         res.status(400).send("Invalid input data. Cannot leave author search field empty");
     }
     else { 
         const authorInventory = await getAuthorSales(author);
-        const bookSearch = await getBookNameSales(req.body.book_name);
+        //const bookSearch = await getBookNameSales(req.body.book_name);
         res.send(authorInventory);
     }
-    
 })
 
 // helper function usage stops here
@@ -224,6 +237,7 @@ app.post('/searchSalesByAuthor', async(req,res)=>{
 app.post('/registerAccount', async(req,res)=>{
     try{
         //TODO: Make sure the email being used isn't already in the database
+        //inputs: plain text password and number of salt rounds: 10
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const userRegister = await createUser(req.body.user_firstName,
             req.body.user_lastName,
@@ -248,11 +262,9 @@ app.get('/logOut', async(req, res)=>{
     res.sendFile(path.join(__dirname,'/views/login.html'));
 })
 
-//autologing button for testing and marking
+//autologging button for testing and marking
 app.post('/loginTest', async (req,res)=>{
-
     const userPass = await getHashedPassword("admin@admin.com");
-
     //check if the password inputed matches with the one on the db
     const isMatch = await bcrypt.compare("admin", userPass);
     //if the password matches, then set the session user to the email for later storage
@@ -267,9 +279,6 @@ app.post('/loginTest', async (req,res)=>{
     else{
         console.log("Your password or email are invalid");
     }
-
-    
-
 })
 
 console.log("Server is running on port 3001");
